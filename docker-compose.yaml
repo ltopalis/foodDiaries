@@ -1,17 +1,19 @@
 version: '3.8'
 
 services:
-  fooddiaries_db:
+  db:
     container_name: fooddiaries_db
-    image: mysql
+    build:
+      context: ./server
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=fooddiaries
+      - MYSQL_DATABASE=foodDiaries
     restart: unless-stopped
     ports:
       - 3306:3306
     volumes:
-      - ./mysql:/var/lib/mysql
+      # - ./mysql:/var/lib/mysql
+      - foodDiaries_volume:/var/lib/mysql
     networks:
       - fooddiaries
 
@@ -24,8 +26,11 @@ services:
     networks:
       - fooddiaries
     depends_on:
-      - fooddiaries_db
+      - db
   
 networks:
   fooddiaries:
     driver: bridge
+
+volumes:
+  foodDiaries_volume:
