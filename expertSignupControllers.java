@@ -1,8 +1,12 @@
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -14,7 +18,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
-public class expertSignupControllers {
+public class expertSignupControllers implements Initializable {
 
     @FXML
     private MenuItem DieticianMenuItem;
@@ -152,21 +156,25 @@ public class expertSignupControllers {
 
     }
 
-    @FXML
-    void checkEmailAddress(ActionEvent event) {
-        String email = emailTextFiled.getText();
+    void checkEmailAddress(String email) {
+        String match = "[a-zA-Z0-9]{4,}@[a-zA-Z]{3,}.[a-zA-Z]{2,}";
 
-        System.out.println(emailTextFiled.isFocused());
-
-        if (!emailTextFiled.isFocused()) {
-            System.out.println("NOT FOCUSED\n\n\n");
-
-            if (email.equals("test"))
-                System.out.println(email);
-            else
-                System.out.println("Fine");
+        if (!email.matches(match)) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Σφάλμα");
+            alert.setHeaderText("Σφάλμα");
+            alert.setContentText("Ελέξτε το email που δώσατε");
+            alert.show();
         }
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        emailTextFiled.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue)
+                checkEmailAddress(emailTextFiled.getText());
+        });
     }
 
 }

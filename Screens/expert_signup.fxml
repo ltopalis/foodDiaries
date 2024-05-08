@@ -25,7 +25,7 @@
             <Button fx:id="exitButton2" layoutX="573.0" layoutY="-1.0" mnemonicParsing="false" onAction="#exitButtonPressed" text="X" />
             <TextField fx:id="firstnameTextField" layoutX="72.0" layoutY="64.0" prefHeight="24.0" prefWidth="186.0" promptText="Όνομα" />
             <TextField fx:id="lastnameTextField" layoutX="323.0" layoutY="64.0" prefHeight="24.0" prefWidth="186.0" promptText="Επώνυμο" />
-            <TextField fx:id="emailTextFiled" layoutX="72.0" layoutY="115.0" onAction="#checkEmailAddress" prefHeight="24.0" prefWidth="186.0" promptText="E-mail" />
+            <TextField fx:id="emailTextFiled" layoutX="72.0" layoutY="115.0" prefHeight="24.0" prefWidth="186.0" promptText="E-mail" />
             <TextField fx:id="phoneNumberTextFiled" layoutX="322.0" layoutY="115.0" prefHeight="24.0" prefWidth="186.0" promptText="Τηλέφωνο" />
             <PasswordField fx:id="passwordTextFiled" layoutX="72.0" layoutY="161.0" prefHeight="24.0" prefWidth="186.0" promptText="Κωδικός Πρόσβασης" />
             <PasswordField fx:id="comfirmPasswordTextFiled" layoutX="323.0" layoutY="161.0" prefHeight="24.0" prefWidth="186.0" promptText="Επιβεβαίωση Κωδικού" />
