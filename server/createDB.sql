@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS person (
     email       VARCHAR(80)                                             PRIMARY KEY NOT NULL,
     name        VARCHAR(50)                                             NOT NULL,
     surname     VARCHAR(50)                                             NOT NULL,
-    password    VARCHAR(50)                                             NOT NULL,
+    password    VARCHAR(20)                                             NOT NULL,
     last_login  DATETIME                                                DEFAULT NULL,
     signup_date DATETIME                                                NOT NULL,
     role        ENUM("TRAINER", "DOCTOR", "USER", "ADMIN", "DIETICIAN") NOT NULL
