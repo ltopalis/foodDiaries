@@ -36,21 +36,31 @@ CREATE TABLE IF NOT EXISTS expert (
 -- ****** CREATE STORED PROCEDURES ********
 DELIMITER $
 
-CREATE PROCEDURE checkNewPerson(IN email VARCHAR(80), OUT checkIfExists BOOLEAN)
+CREATE PROCEDURE checkNewPerson(IN email VARCHAR(80), OUT checkIfExists VARCHAR(80))
 BEGIN
-    DECLARE check_id INT;
+    DECLARE mail VARCHAR(80);
 
-    SELECT id INTO check_id
+    SELECT person.email INTO mail
     FROM person
     WHERE person.email = email;
 
-    IF check_id IS NULL THEN
-        SET checkIfExists = FALSE;
+    IF mail IS NULL
+    THEN
+        SET checkIfExists = 0;
     ELSE
-        SET checkIfExists = TRUE;
+        SET checkIfExists = 1;
     END IF;
+END$
+
+
+CREATE PROCEDURE addExpert(IN email VARCHAR(80), IN firstName VARCHAR(50), IN lastName VARCHAR(50), IN password VARCHAR(50), IN role  ENUM("TRAINER", "DOCTOR", "DIETICIAN"), IN degree BLOB)
+BEGIN
+
+    INSERT INTO person VALUES (email, name, surname, password, NULL, NOW(), role);
+    INSERT INTO expert VALUES (email, NULL, NULL, degree);
 
 END$
+
 
 DELIMITER ;
 
