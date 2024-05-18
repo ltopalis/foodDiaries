@@ -203,8 +203,7 @@ public class expertSignupControllers implements Initializable {
                 alert.setTitle("Σφάλμα");
                 alert.setHeaderText("Σφάλμα");
                 alert.setContentText(
-                        "Προέκυψε σφάλμα κατά την αποθήκευση των δεδομένων σας. Παρακαλώ προσπαθήστε ξανά σε λίγα λεπτά. "
-                                + e);
+                        "Προέκυψε σφάλμα κατά την αποθήκευση των δεδομένων σας. Παρακαλώ προσπαθήστε ξανά σε λίγα λεπτά. ");
                 alert.show();
             }
         }
@@ -275,8 +274,7 @@ public class expertSignupControllers implements Initializable {
             alert.setTitle("Σφάλμα");
             alert.setHeaderText("Σφάλμα");
             alert.setContentText(
-                    "Προέκυψε σφάλμα κατά την αποθήκευση των δεδομένων σας. Παρακαλώ προσπαθήστε ξανά σε λίγα λεπτά. "
-                            + e);
+                    "Προέκυψε σφάλμα κατά την αποθήκευση των δεδομένων σας. Παρακαλώ προσπαθήστε ξανά σε λίγα λεπτά.");
             alert.show();
         } catch (FileNotFoundException e) {
             Alert alert = new Alert(AlertType.ERROR);
