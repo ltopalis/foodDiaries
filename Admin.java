@@ -1,21 +1,9 @@
-import java.io.File;
-public class Admin extends PERSON{
-protected Product product;
 
 
+public class ADMIN extends PERSON {
 
-public Admin(String name, String lastname, String Email, String Password, String phone_number, int id, float amount, int idWallet,Product product){
-super( name,  lastname,  Email, Password,  phone_number, id,  amount, idWallet);
-this.product = new product(idProduct, product_name, price, numberOfItems, description, image,addFrom );
+    public ADMIN(String name, String lastname, String Email, String Password, String phone_number, float amount, int idWallet, String address_name, String address_number, String zipCode, String country, int id,
+            String friendly_name) {
+        super(name, lastname, Email, Password, phone_number, amount, idWallet, address_name, address_number, zipCode, country, id, friendly_name);
+    }
 }
-
-public void createProduct(Product product){
-this.product=product;
-P.add(product);
-System.out.println(P);
-}
-
-            }
-            
- 
-
