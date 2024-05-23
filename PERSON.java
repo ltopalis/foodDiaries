@@ -1,3 +1,4 @@
+
 abstract class PERSON {
 
     protected String name;
@@ -5,18 +6,18 @@ abstract class PERSON {
     protected String Email;
     protected String Password;
     protected String phone_number;
-    protected int id;
     protected WALLET wallet;
+    protected ADDRESS address;
 
-    public PERSON(String name, String lastname, String Email, String Password, String phone_number, int id,
-            float amount, int idWallet) {
+    public PERSON(String name, String lastname, String Email, String Password, String phone_number, float amount, int idWallet, String address_name, String address_number, String zipCode, String country, int address_id,
+            String friendly_name) {
         this.name = name;
         this.lastname = lastname;
         this.Email = Email;
         this.Password = Password;
         this.phone_number = phone_number;
-        this.id = id;
         this.wallet = new WALLET(idWallet, amount);
+        this.address = new ADDRESS(address_name, address_number, zipCode, country, address_id, friendly_name);
     }
 
     public String getName() {
@@ -59,14 +60,6 @@ abstract class PERSON {
         this.phone_number = phone_number;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public WALLET getWallet() {
         return wallet;
     }
@@ -84,8 +77,9 @@ abstract class PERSON {
 
             return true;
 
-        } else
+        } else {
             return false;
+        }
 
     }
 

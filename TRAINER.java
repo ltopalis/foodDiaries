@@ -1,54 +1,10 @@
-import java.time.*;
-import java.util.List;
 
-public class TRAINER extends EXPERT{
-    protected String city;
-    protected String address;
-    protected Boolean personal;
+import java.io.File;
 
+public class TRAINER extends EXPERT {
 
-
-    public TRAINER(String city,String address,Boolean personal)
-    {
-        this.city = city;
-        this.address = address;
-        this.personal = personal;
+    public TRAINER(String name, String lastname, String Email, String Password, String phone_number, float amount, int idWallet, String address_name, String address_number, String zipCode, String country, int id,
+            String friendly_name, double salary, File degreeFile, ADMIN acceptedBy, USERS users, MESSAGES messages) {
+        super(name, lastname, Email, Password, phone_number, amount, idWallet, address_name, address_number, zipCode, country, id, friendly_name, salary, degreeFile, acceptedBy, users, messages);
     }
-
-
-    public String getCity() {
-        return this.city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getAddress(){
-        return this.address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Boolean getPersonal() {
-        return this.personal;
-    }
-
-    public void setPersonal(Boolean personal){
-        this.personal = personal;
-    }
-
-    public checkPersonal(List<LocalDateTime> dates, List<APPOINTMENT> appointments, int per_id){
-        if(this.personal=true){
-            PERSONAL_TRAINER pt= new PERSONAL_TRAINER(city,address, personal, per_id, dates, appointments);
-
-        }
-    }
-
-    public createProgram(USER toUser,EXPERT from,List<LocalDateTime> date, List<String> program){
-            PROGRAM pr= new PROGRAM(toUser,from,date,program);
-    }
-
 }
