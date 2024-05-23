@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 23, 2024 at 06:40 PM
+-- Generation Time: May 23, 2024 at 08:06 PM
 -- Server version: 8.4.0
 -- PHP Version: 8.2.19
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `foodDiaries`
 --
+CREATE DATABASE IF NOT EXISTS `foodDiaries` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `foodDiaries`;
 
 -- --------------------------------------------------------
 
