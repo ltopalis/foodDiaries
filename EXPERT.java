@@ -1,5 +1,6 @@
 
 import java.io.File;
+import java.util.ArrayList;
 
 abstract class EXPERT extends PERSON {
 
@@ -8,6 +9,18 @@ abstract class EXPERT extends PERSON {
     protected ADMIN acceptedBy;
     protected USERS users;
     protected MESSAGES messages;
+    protected ArrayList<ADVICE> advice;
+
+    public EXPERT(String name, String lastname, String Email, String Password, String phone_number, float amount, int idWallet, String address_name, String address_number, String zipCode, String country, int id,
+            String friendly_name, double salary, File degreeFile, ADMIN acceptedBy, USERS users, MESSAGES messages, ArrayList<ADVICE> advice) {
+        super(name, lastname, Email, Password, phone_number, amount, idWallet, address_name, address_number, zipCode, country, id, friendly_name);
+        this.salary = salary;
+        this.degreeFile = degreeFile;
+        this.acceptedBy = acceptedBy;
+        this.users = users;
+        this.messages = messages;
+        this.advice = advice;
+    }
 
     public EXPERT(String name, String lastname, String Email, String Password, String phone_number, float amount, int idWallet, String address_name, String address_number, String zipCode, String country, int id,
             String friendly_name, double salary, File degreeFile, ADMIN acceptedBy, USERS users, MESSAGES messages) {
@@ -17,6 +30,11 @@ abstract class EXPERT extends PERSON {
         this.acceptedBy = acceptedBy;
         this.users = users;
         this.messages = messages;
+        this.advice = new ArrayList<ADVICE>();
+    }
+
+    public EXPERT(String email, String name, String lastname) {
+        super(email, name, lastname);
     }
 
     public double getSalary() {

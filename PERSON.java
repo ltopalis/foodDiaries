@@ -7,7 +7,7 @@ abstract class PERSON {
     protected String Password;
     protected String phone_number;
     protected WALLET wallet;
-    protected ADDRESS address;
+    protected ADDRESSES addresses;
 
     public PERSON(String name, String lastname, String Email, String Password, String phone_number, float amount, int idWallet, String address_name, String address_number, String zipCode, String country, int address_id,
             String friendly_name) {
@@ -17,7 +17,13 @@ abstract class PERSON {
         this.Password = Password;
         this.phone_number = phone_number;
         this.wallet = new WALLET(idWallet, amount);
-        this.address = new ADDRESS(address_name, address_number, zipCode, country, address_id, friendly_name);
+        this.addresses = new ADDRESSES(Email);
+    }
+
+    public PERSON(String email, String name, String lastname) {
+        this.Email = email;
+        this.name = name;
+        this.lastname = lastname;
     }
 
     public String getName() {

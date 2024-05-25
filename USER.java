@@ -1,9 +1,5 @@
 
-import java.util.List;
-
 public class USER extends PERSON {
-
-    // List<String> Or = new List<>();
 
     private float weight;
     private float height;
@@ -12,11 +8,16 @@ public class USER extends PERSON {
     private DOCTOR doctor;
     private DIETICIAN dietician;
     private TRAINER trainer;
+    private PRODUCTS cart;
+    private PROGRAM trainingProgram;
+    private PROGRAM nutritionProgram;
 
-    // Product pr;
+    public USER(String name, String lastname, String Email, String Password, String phone_number) {
+        super(name, lastname, Email, Password, phone_number, 0, 0, null, null, null, null, 0, null);
+    }
 
     public USER(String name, String lastname, String Email, String Password, String phone_number, float amount, int idWallet, String address_name, String address_number, String zipCode, String country, int id,
-            String friendly_name, float weight, float height, DOCTOR doctor, DIETICIAN dietician, TRAINER trainer, String nutricion_goal, String training_goal) {
+            String friendly_name, float weight, float height, DOCTOR doctor, DIETICIAN dietician, TRAINER trainer, String nutricion_goal, String training_goal, PROGRAM trainingProgram, PROGRAM nutritionProgram) {
         super(name, lastname, Email, Password, phone_number, amount, idWallet, address_name, address_number, zipCode, country, id, friendly_name);
         this.weight = weight;
         this.height = height;
@@ -25,6 +26,17 @@ public class USER extends PERSON {
         this.trainer = trainer;
         this.nutrition_goal = nutricion_goal;
         this.training_goal = training_goal;
+        this.cart = new PRODUCTS();
+        this.trainingProgram = trainingProgram;
+        this.nutritionProgram = nutritionProgram;
+    }
+
+    public USER(String email, String name, String lastname) {
+        super(email, name, lastname);
+    }
+
+    public USER() {
+        super(null, null, null);
     }
 
     public float getWeight() {
@@ -82,4 +94,29 @@ public class USER extends PERSON {
     public void setTRAINER(TRAINER trainer) {
         this.trainer = trainer;
     }
+
+    public PRODUCTS getCart() {
+        return cart;
+    }
+
+    public void setCart(PRODUCTS cart) {
+        this.cart = cart;
+    }
+
+    public PROGRAM getTrainingProgram() {
+        return trainingProgram;
+    }
+
+    public void setTrainingProgram(PROGRAM trainingProgram) {
+        this.trainingProgram = trainingProgram;
+    }
+
+    public PROGRAM getNutritionProgram() {
+        return nutritionProgram;
+    }
+
+    public void setNutritionProgram(PROGRAM nutritionProgram) {
+        this.nutritionProgram = nutritionProgram;
+    }
+
 }

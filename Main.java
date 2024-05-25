@@ -3,11 +3,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        DIETICIAN myDiet = new DIETICIAN("sdf", "fsd", "fds", "dfs", "fd", 659.3f, 565, "sfd", "fd", "fd", "fs", 5, "f", 65, null, null, null, null);
+        // USER myUser = new USER("name", "lastname", "dimitris@gmail.com", "password", "1234567890");
+        // TRAINER mytrainer = new TRAINER("name", "lastname", "george@gmail.com", "password", "1234567890");
 
-        USER myUser = new USER("al", "al", "ka", "ka", "sa", 56.5f, 5, "a ", "da", "Ad", "re", 56, "dsf", 56.4f, 45.5f, null, myDiet, null, "dsa", "ds");
+        // mytrainer.createProgram(myUser, "breakfast", "lunch", "dinner");
 
-        System.out.println(myUser.getWallet().getAmount());
+        MESSAGES myMessages = new MESSAGES("dimitris@gmail.com");
+
+        for(MESSAGE mes : myMessages.getMessages())
+            System.out.println(mes.getMessage() + " " + mes.getTime());
     }
 
 }

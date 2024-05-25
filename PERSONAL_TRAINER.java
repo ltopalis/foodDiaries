@@ -1,44 +1,41 @@
+
 import java.time.LocalDateTime;
 import java.util.*;
-import java.time.*;
-import java.util.List;
+import java.io.File;
 
 public class PERSONAL_TRAINER extends TRAINER {
-    protected int per_id;
-    protected List<LocalDateTime> dates;
-    protected List<APPOINTMENT> appointments;
 
-    public PERSONAL_TRAINER(String city, String address, Boolean personal, int per_id,List<LocalDateTime> dates,List<APPOINTMENT> appointments) {
-        super(city, address, personal);
-        this.city = city;
-        this.address = address;
-        this.personal = personal;
-        this.per_id = per_id;
+    private ArrayList<LocalDateTime> dates;
+    private ArrayList<APPOINTMENT> appointments;
+
+    public PERSONAL_TRAINER(String name, String lastname, String Email, String Password, String phone_number, float amount, int idWallet, String address_name, String address_number, String zipCode, String country, int id,
+            String friendly_name, double salary, File degreeFile, ADMIN acceptedBy, USERS users, MESSAGES messages, ADDRESS address, ArrayList<LocalDateTime> dates, ArrayList<APPOINTMENT> appointments) {
+        super(name, lastname, Email, Password, phone_number, amount, idWallet, address_name, address_number, zipCode, country, id, friendly_name, salary, degreeFile, acceptedBy, users, messages, address);
         this.dates = dates;
         this.appointments = appointments;
     }
 
-    public int getPer_id() {
-        return per_id;
+    public PERSONAL_TRAINER(String name, String lastname, String Email, String Password, String phone_number, ArrayList<LocalDateTime> dates, ArrayList<APPOINTMENT> appointments) {
+        super(name, lastname, Email, Password, phone_number);
+        this.dates = dates;
+        this.appointments = appointments;
     }
 
-    public void setPer_id(int per_id) {
-        this.per_id = per_id;
-    }
-
-    public List<LocalDateTime> getDates() {
+    public ArrayList<LocalDateTime> getDates() {
         return dates;
     }
 
-    public void setDates(List<LocalDateTime> dates) {
+    public void setDates(ArrayList<LocalDateTime> dates) {
         this.dates = dates;
     }
 
-    public List<APPOINTMENT> getAppointments() {
+    public ArrayList<APPOINTMENT> getAppointments() {
         return appointments;
     }
 
-    public void setAppointments(List<APPOINTMENT> appointments) {
+    public void setAppointments(ArrayList<APPOINTMENT> appointments) {
         this.appointments = appointments;
     }
+
+    
 }

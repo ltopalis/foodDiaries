@@ -29,8 +29,12 @@ public class WALLET {
         this.amount += amount;
     }
 
-    public void reduceAmount(float amount) {
+    public boolean reduceAmount(float amount) {
+        if (this.amount < amount) {
+            return false;
+        }
         this.amount -= amount;
+        return true;
     }
 
 }
