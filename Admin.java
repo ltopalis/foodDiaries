@@ -6,4 +6,8 @@ public class ADMIN extends PERSON {
             String friendly_name) {
         super(name, lastname, Email, Password, phone_number, amount, idWallet, address_name, address_number, zipCode, country, id, friendly_name);
     }
+
+    public ADMIN(String name, String lastname, String Email, String Password, String phone_number) {
+        super(name, lastname, Email, Password, phone_number, 0, 0, null, null, null, null, 0, null);
+    }
 }

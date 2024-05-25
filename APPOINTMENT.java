@@ -1,80 +1,76 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 public class APPOINTMENT {
-    protected int idAppointment;
-    protected LocalDateTime date1;
-    protected double price;
-    protected int personal_trainer_id;
-    protected int user_id;
 
-    public APPOINTMENT(int idAppointment, LocalDateTime date1, double price, int personal_trainer_id, int user_id) {
+    private int idAppointment;
+    private LocalDateTime dateTime;
+    private boolean isfree;
+    private float price;
+
+    public APPOINTMENT(int idAppointment, LocalDateTime dateTime, boolean isfree, float price) {
         this.idAppointment = idAppointment;
-        this.date1 = date1;
-        this.price = price;
-        this.personal_trainer_id = personal_trainer_id;
-        this.user_id = user_id;
-    }
-
-    public void setIdAppointment(int idAppointment) {
-        this.idAppointment = idAppointment;
-    }
-
-    public void setDate(LocalDateTime date1) {
-        this.date1 = date1;
-    }
-
-    public void setPrice(double price) {
+        this.dateTime = dateTime;
+        this.isfree = isfree;
         this.price = price;
     }
 
-    public void setPersonal_trainer_id(int personal_trainer_id) {
-        this.personal_trainer_id = personal_trainer_id;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public boolean isIsfree() {
+        return isfree;
+    }
+
+    public void setIsfree(boolean isfree) {
+        this.isfree = isfree;
     }
 
     public int getIdAppointment() {
         return idAppointment;
     }
 
-    public double getPrice() {
+    public void setIdAppointment(int idAppointment) {
+        this.idAppointment = idAppointment;
+    }
+
+    public float getPrice() {
         return price;
     }
 
-    public int getPersonal_trainer_id() {
-        return personal_trainer_id;
+    public void setPrice(float price) {
+        this.price = price;
     }
 
-    public LocalDateTime getDate() {
-        return date1;
-    }
+    public boolean reserveTime(Connection conn, EXPERT expert) throws SQLException {
+        if (!this.isfree) { // can be reserved
+            this.isfree = false;
+            Random randomNumber = new Random();
+            this.idAppointment = randomNumber.nextInt(LocalTime.now().getNano());
 
-    public int getUser_id() {
-        return user_id;
-    }
+            String query = "UPDATE timetable SET isFree = false, id = ? WHERE expert = ? AND dateTime = ?";
 
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, idAppointment);
+            stmt.setString(2, expert.getEmail());
+            stmt.setString(3, this.dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
-    public static ObservableList<APPOINTMENT> showAppointments(int pt_id){
-        ObservableList<APPOINTMENT> list = FXCollections.observableArrayList();
-        try {
-            PreparedStatement ps = connection.prepareStatement("select * from appointment where personal_id= ?"); //
-            ps.setString(1, pt_id);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()){
-                list.add(new APPOINTMENT(Integer.parseInt(rs.getString("appointment_id")),
-                        LocalDateTime.parse(rs.getString("date")),
-                        Double.parseDouble(rs.getString("price")),
-                        Integer.parseInt(rs.getString("personal_trainer_id")),
-                        Integer.parseInt(rs.getString("user_id"))));
-
-            }
-        } catch (Exception e) {
+            stmt.execute();
+            return true;
+        } else {
+            System.err.println("Cannot be reserved!"); return false;
         }
-        return list;
-
     }
+
 }
