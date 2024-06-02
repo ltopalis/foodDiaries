@@ -10,10 +10,14 @@ public class DOCTOR extends EXPERT {
 
     public DOCTOR(String name, String lastname, String Email, String Password, String phone_number) {
         super(name, lastname, Email, Password, phone_number, 0, 0, null, null, null, null, 0, null, 0, null, null, null, null);
+        this.users = new USERS();
     }
 
     public DOCTOR(String email, String name, String lastname) {
         super(email, name, lastname);
+
+        this.users = new USERS();
     }
+
 
 }

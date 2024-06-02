@@ -37,6 +37,10 @@ abstract class EXPERT extends PERSON {
         super(email, name, lastname);
     }
 
+    public EXPERT() {
+        super();
+    }
+
     public double getSalary() {
         return salary;
     }

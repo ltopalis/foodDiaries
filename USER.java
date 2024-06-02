@@ -31,9 +31,6 @@ public class USER extends PERSON {
         this.nutritionProgram = nutritionProgram;
     }
 
-    public USER(String email, String name, String lastname) {
-        super(email, name, lastname);
-    }
 
     public USER() {
         super(null, null, null);

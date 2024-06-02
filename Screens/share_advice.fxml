@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shareAdviceControllers">
+   <children>
+      <HBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="104.0" text="Dashboard" />
+                  <Button layoutX="10.0" layoutY="42.0" mnemonicParsing="false" onAction="#usersButtonPressed" prefHeight="32.0" prefWidth="104.0" text="Χρήστες" />
+                  <Button layoutX="10.0" layoutY="74.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="104.0" text="Επικοινωνία" />
+                  <AnchorPane prefHeight="254.0" prefWidth="100.0" />
+                  <Button layoutX="10.0" layoutY="338.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="100.0" text="Προφίλ" />
+                  <Button layoutX="10.0" layoutY="363.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="100.0" text="Αποσύνδεση" />
+               </children>
+            </VBox>
+            <StackPane prefHeight="400.0" prefWidth="500.0">
+               <children>
+                  <Pane fx:id="firstScreenPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Text layoutX="112.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JUST A SCREEN">
+                           <font>
+                              <Font size="41.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="usersPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <ComboBox fx:id="chosenUserComboBox" layoutX="175.0" layoutY="175.0" prefWidth="150.0" promptText="Χρήστες" />
+                        <Button layoutX="224.0" layoutY="277.0" mnemonicParsing="false" onAction="#chosenUserButtonPressed" text="Επόμενο" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="userProfilePane" prefHeight="200.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="134.0" fitWidth="134.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="nameLabel" layoutX="250.0" layoutY="32.0" text="MANIATH MAΡIA">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="30.0" layoutY="265.0" text="Διατροφολόγος:" />
+                        <Label layoutX="30.0" layoutY="282.0" text="Γυμναστής:" />
+                        <Label fx:id="dieticianNameLabel" layoutX="138.0" layoutY="265.0" text="Πέτρος Παύλου" />
+                        <Label fx:id="doctorNameLabel" layoutX="138.0" layoutY="282.0" text="Αντώνης Ανδρέου" />
+                        <Label layoutX="250.0" layoutY="73.0" text="email:" />
+                        <Label layoutX="250.0" layoutY="96.0" text="Τηλέφωνο" />
+                        <Label fx:id="emailLabel" layoutX="329.0" layoutY="73.0" text="maria@maria.gr" />
+                        <Label fx:id="phoneNumberLabel" layoutX="329.0" layoutY="96.0" text="69123456870" />
+                        <Button layoutX="342.0" layoutY="353.0" mnemonicParsing="false" onAction="#shareAdviceButtonPressed" text="Κοινοποίηση Εγγράφου" />
+                        <SplitMenuButton layoutX="241.0" layoutY="156.0" mnemonicParsing="false" text="Ιατρικό ιστορικό" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="sendAdvicePane" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="133.0" layoutY="49.0" text="Κοινοποίηση Εγγράφου">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="216.0" layoutY="361.0" mnemonicParsing="false" onAction="#sendAdviceButtonPressed" text="Αποστολή" />
+                        <ComboBox fx:id="chooseExpertComboBox" layoutX="175.0" layoutY="110.0" prefWidth="150.0" promptText="Επιλογή ειδικού" />
+                        <Label fx:id="fileNameLabel" layoutX="168.0" layoutY="287.0" prefHeight="17.0" prefWidth="166.0" />
+                        <TextArea fx:id="adviceTextArea" layoutX="31.0" layoutY="151.0" prefHeight="200.0" prefWidth="452.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+      <Button fx:id="exitButton" layoutX="580.0" mnemonicParsing="false" onAction="#exitButtonPressed" text="X" />
+   </children>
+</AnchorPane>
