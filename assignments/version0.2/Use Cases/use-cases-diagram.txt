@@ -1,0 +1,89 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "γιατρός" as Doctor
+actor "Ειδικός" as Expert
+actor "Γυμναστής" as Trainer
+actor "Χρήστες εφαρμογής" as AllUsers
+actor "Βάση Δεδομένων" as DB
+actor "Χρήστης" as User
+actor "Διατροφολόγος ή Γυμναστής" as TrainNutr
+actor "File Explorer" as FileExplorer
+
+rectangle "Use Cases" {
+	usecase "Σύνδεση" as SignIn
+	usecase "Εγγραφή χρήστη"  as SignUpUser
+	usecase "Εγγραφή ειδικού" as SignupExpert
+	usecase "Αλλαγή στοιχείων σύνδεσης" as ChangeCredentials
+	usecase "Πρόοδος ολοκλήρωσης προγράμματος" as progressComplete
+	usecase "Αλλαγή στόχου" as ChangeGoal
+	usecase "Αγορά προϊόντος" as buyProduct
+	usecase "Ειδοποιήσεις" as notifications
+	usecase "Κράτηση Personal Trainer" as personalTrainerBooking
+	usecase "Αξιολόγηση προγράμματος" as programFeedback
+	usecase "Δημιουργία προγράμματος" as createProgram
+	usecase "Επικοινωνία χρήστη με ειδικούς" as communticateUserWithExperts 
+	usecase "Επικοινωνία γιατρού με διατροφολόγο ή γυμναστή" as communicateDoctorWithExperts
+	usecase "Εγγραφή Personal training" as createPersonalTrainer
+	usecase "Κοινοποίηση συμβουλών" as shareAdvice
+	usecase "Απόρριψη ειδικού" as rejectExpert
+	usecase "Επιβεβαίωση ειδικού" as acceptExpert
+	usecase "Δημιουργία προϊόντων" as addProduct
+	usecase "Επεξεργασία προγράμματος" as modifyProduct
+	usecase "Ακύρωση μηνύματος" as cancelMessage
+}
+
+AllUsers --> SignIn
+AllUsers --> ChangeCredentials
+AllUsers --> cancelMessage
+
+TrainNutr --> modifyProduct
+
+Admin --> rejectExpert
+Admin --> acceptExpert
+Admin --> addProduct
+
+Expert --> SignupExpert
+Expert --> createProgram
+
+User --> SignUpUser
+User --> progressComplete
+User --> ChangeGoal
+User --> buyProduct
+User --> notifications
+User --> personalTrainerBooking
+User --> programFeedback
+User --> communticateUserWithExperts
+
+Doctor --> communicateDoctorWithExperts
+Doctor --> shareAdvice
+
+Trainer --> createPersonalTrainer
+
+FileExplorer --> communicateDoctorWithExperts
+FileExplorer --> SignupExpert
+FileExplorer --> shareAdvice
+
+DB --> SignIn
+DB --> SignupExpert
+DB --> SignUpUser
+DB --> ChangeCredentials
+DB --> progressComplete
+DB --> ChangeGoal
+DB --> buyProduct
+DB --> notifications
+DB --> personalTrainerBooking
+DB --> programFeedback
+DB --> createProgram
+DB --> communticateUserWithExperts
+DB --> communicateDoctorWithExperts
+DB --> createPersonalTrainer
+DB --> shareAdvice
+DB --> acceptExpert
+DB --> rejectExpert
+DB --> addProduct
+DB --> modifyProduct
+DB --> cancelMessage
+
+@enduml
