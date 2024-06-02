@@ -1,7 +1,7 @@
 
 import java.io.File;
 
-abstract class PRODUCT {
+public class PRODUCT {
 
     private int idProduct;
     private String product_name;
