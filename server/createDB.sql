@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jun 02, 2024 at 10:49 AM
+-- Generation Time: Jun 02, 2024 at 08:52 PM
 -- Server version: 8.4.0
 -- PHP Version: 8.2.19
 
@@ -179,13 +179,6 @@ CREATE TABLE `personalTrainer` (
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `personalTrainer`
---
-
-INSERT INTO `personalTrainer` (`personal_email`, `city`, `price`) VALUES
-('george@gmail.com', 'Patras', 25);
-
 -- --------------------------------------------------------
 
 --
@@ -246,14 +239,6 @@ CREATE TABLE `timetable` (
   `user` varchar(80) DEFAULT NULL,
   `id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `timetable`
---
-
-INSERT INTO `timetable` (`expert`, `dateTime`, `isFree`, `user`, `id`) VALUES
-('george@gmail.com', '2024-05-28 13:02:08', 1, NULL, NULL),
-('george@gmail.com', '2024-05-29 13:02:41', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -429,7 +414,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `advice`
 --
 ALTER TABLE `advice`
-  MODIFY `advice_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `advice_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
