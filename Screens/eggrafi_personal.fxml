@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="signupPersonalControllers">
+   <children>
+      <HBox prefHeight="400.0" prefWidth="114.0">
+         <children>
+            <VBox prefHeight="400.0" prefWidth="121.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Dashboard" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Χρήστες" />
+                  <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Επικοινωνία" />
+                  <Button layoutX="10.0" layoutY="63.0" mnemonicParsing="false" onAction="#personalButtonPressed" prefHeight="26.0" prefWidth="113.0" text="Personal" />
+                  <AnchorPane prefHeight="244.0" prefWidth="114.0" />
+                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Προφίλ" />
+                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" text="Αποσύνδεση" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <StackPane layoutX="114.0" layoutY="-2.0" prefHeight="410.0" prefWidth="488.0">
+         <children>
+            <Pane fx:id="firstScreeenPane" layoutX="10.0" layoutY="10.0" prefHeight="402.0" prefWidth="487.0" visible="false">
+               <children>
+                  <Text layoutX="122.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JUST A SCREEN">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="registrationPersonalPane" layoutX="10.0" layoutY="10.0" prefHeight="402.0" prefWidth="487.0">
+               <children>
+                  <TextField fx:id="cityTextfield" layoutX="56.0" layoutY="130.0" promptText="Πόλη" />
+                  <TextField fx:id="timeTextfield" layoutX="244.0" layoutY="193.0" promptText="Ώρα" />
+                  <Button layoutX="367.0" layoutY="341.0" mnemonicParsing="false" onAction="#registrationButtonPressed" text="Εγγραφή" />
+                  <DatePicker fx:id="availableDateDatePicker" layoutX="43.0" layoutY="193.0" />
+                  <TextField fx:id="priceTextField" layoutX="244.0" layoutY="130.0" promptText="Τιμή" />
+               </children>
+            </Pane>
+            <Pane fx:id="alreadyPersonalPane" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <Text layoutX="190.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ραντεβού">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="137.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Δεν έχετε προγραμματισμένα ραντεβού" />
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+      <Button layoutX="580.0" mnemonicParsing="false" onAction="#exitButtonPressed" text="X" />
+   </children>
+</AnchorPane>

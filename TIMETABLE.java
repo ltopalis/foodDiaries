@@ -34,18 +34,48 @@ public class TIMETABLE {
     public void reserve(APPOINTMENT appointment, PERSONAL_TRAINER personal, USER user) {
         try (Connection conn = connectDB.getConnection()) {
             if (appointment.reserveTime(conn, personal)) {
-                if (user.getWallet().reduceAmount(appointment.getPrice())) {
-                    personal.getWallet().addAmount(appointment.getPrice());
+                if (user.getWallet().reduceAmount(personal.getPrice())) {
+                    personal.getWallet().addAmount(personal.getPrice());
                 }
 
                 String query = "UPDATE wallet SET value = ? WHERE person_id = ?";
                 PreparedStatement stmt = conn.prepareStatement(query);
-                stmt.setFloat(1, user.getWallet().getAmount());
+                stmt.setDouble(1, user.getWallet().getAmount());
                 stmt.setString(2, user.getEmail());
                 stmt.execute();
 
                 stmt = conn.prepareStatement(query);
-                stmt.setFloat(1, personal.getWallet().getAmount());
+                stmt.setDouble(1, personal.getWallet().getAmount());
+                stmt.setString(2, personal.getEmail());
+                stmt.execute();
+
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    public void reserve(String appointmentTime, PERSONAL_TRAINER personal, USER user) {
+
+        APPOINTMENT appointment = new APPOINTMENT(null, false);
+        for (APPOINTMENT ap : this.timetable)
+            if(ap.getDateTime().equals(appointmentTime))
+                appointment = ap;
+
+        try (Connection conn = connectDB.getConnection()) {
+            if (appointment.reserveTime(conn, personal)) {
+                if (user.getWallet().reduceAmount(personal.getPrice())) {
+                    personal.getWallet().addAmount(personal.getPrice());
+                }
+
+                String query = "UPDATE wallet SET value = ? WHERE person_id = ?";
+                PreparedStatement stmt = conn.prepareStatement(query);
+                stmt.setDouble(1, user.getWallet().getAmount());
+                stmt.setString(2, user.getEmail());
+                stmt.execute();
+
+                stmt = conn.prepareStatement(query);
+                stmt.setDouble(1, personal.getWallet().getAmount());
                 stmt.setString(2, personal.getEmail());
                 stmt.execute();
 
