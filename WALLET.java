@@ -2,9 +2,9 @@
 public class WALLET {
 
     private int idWallet;
-    private float amount;
+    private double amount;
 
-    public WALLET(int idWallet, float amount) {
+    public WALLET(int idWallet, double amount) {
         this.amount = amount;
         this.idWallet = idWallet;
     }
@@ -17,19 +17,19 @@ public class WALLET {
         this.idWallet = idWallet;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
-    public void addAmount(float amount) {
+    public void addAmount(double amount) {
         this.amount += amount;
     }
 
-    public boolean reduceAmount(float amount) {
+    public boolean reduceAmount(double amount) {
         if (this.amount < amount) {
             return false;
         }
