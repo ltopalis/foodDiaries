@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -89,6 +90,7 @@ public class expertSignupControllers implements Initializable {
     private File certification;
     private boolean email_flag = true;
     private FileChooser fileChooser = new FileChooser();
+    private EXPERTS experts;
 
     private void clearAllVariables() {
         comfirmPasswordTextFiled.setText(null);
@@ -122,8 +124,9 @@ public class expertSignupControllers implements Initializable {
         alert.getButtonTypes().setAll(buttonTypeCancel, buttonTypeOK);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonTypeOK)
+        if (result.get() == buttonTypeOK) {
             System.exit(0);
+        }
     }
 
     @FXML
@@ -175,37 +178,22 @@ public class expertSignupControllers implements Initializable {
             alert.setContentText("Οι κωδικοί πρόσβασης διαφέρουν");
             alert.show();
         } else {
-            try (Connection conn = connectDB.getConnection()) {
-                String query = "CALL checkNewPerson(?, ?)";
-                CallableStatement stmt = conn.prepareCall(query);
-                stmt.setString(1, emailTextFiled.getText());
-                stmt.registerOutParameter(2, Types.BOOLEAN);
-                stmt.execute();
-                boolean checkIfExists = stmt.getBoolean(2);
-
-                if (checkIfExists) {
-                    Alert alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Σφάλμα");
-                    alert.setHeaderText("Σφάλμα");
-                    alert.setContentText("Ο χρήστης υπάρχει. Κάντε σύνδεση");
-                    alert.show();
-
-                    certificationPane.setVisible(false);
-                    personalInfoPane.setVisible(false);
-                    first_screen.setVisible(true);
-                    clearAllVariables();
-                } else {
-                    personalInfoPane.setVisible(false);
-                    certificationPane.setVisible(true);
-                }
-            } catch (SQLException e) {
+            if (experts.checkIfExists(emailTextFiled.getText())) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Σφάλμα");
                 alert.setHeaderText("Σφάλμα");
-                alert.setContentText(
-                        "Προέκυψε σφάλμα κατά την αποθήκευση των δεδομένων σας. Παρακαλώ προσπαθήστε ξανά σε λίγα λεπτά. ");
+                alert.setContentText("Ο χρήστης υπάρχει. Κάντε σύνδεση");
                 alert.show();
+
+                certificationPane.setVisible(false);
+                personalInfoPane.setVisible(false);
+                first_screen.setVisible(true);
+                clearAllVariables();
+            } else {
+                personalInfoPane.setVisible(false);
+                certificationPane.setVisible(true);
             }
+
         }
 
     }
@@ -287,12 +275,15 @@ public class expertSignupControllers implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        experts = new EXPERTS();
+
         emailTextFiled.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue)
+            if (!newValue) {
                 checkEmailAddress(emailTextFiled.getText());
+            }
         });
 
-        String[] specialization = { "Γυμναστής", "Διατροφολόγος", "Γιατρός" };
+        String[] specialization = {"Γυμναστής", "Διατροφολόγος", "Γιατρός"};
         specializationChoiceBox.getItems().addAll(specialization);
 
         fileChooser.setInitialDirectory(null);
