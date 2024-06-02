@@ -14,4 +14,5 @@ public class DIETICIAN extends EXPERT{
     public DIETICIAN(String email, String name, String lastname) {
         super(email, name, lastname);
     }
+
 }
