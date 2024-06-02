@@ -85,10 +85,10 @@ public class PROGRAM {
     }
 
     public void save(Connection connection) throws SQLException {
-        
+
         String query = "INSERT INTO program VALUES(?, ?, ?, ?, ?, ?)";
 
-        PreparedStatement  preparedstmt = connection.prepareStatement(query);
+        PreparedStatement preparedstmt = connection.prepareStatement(query);
         preparedstmt.setString(1, this.fromExpert.getEmail());
         preparedstmt.setString(2, this.toUser.getEmail());
         preparedstmt.setString(3, this.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));

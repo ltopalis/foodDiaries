@@ -26,6 +26,10 @@ abstract class PERSON {
         this.lastname = lastname;
     }
 
+    public PERSON() {
+        
+    }
+
     public String getName() {
         return name;
     }
@@ -74,7 +78,7 @@ abstract class PERSON {
         this.wallet = wallet;
     }
 
-    public Boolean transaction(PERSON receiver, float amount) {
+    public boolean transaction(PERSON receiver, float amount) {
 
         if (this.wallet.getAmount() >= amount) {
 
