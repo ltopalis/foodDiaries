@@ -67,7 +67,7 @@ public class EXPERTS {
         this.experts = experts;
     }
 
-    public Boolean checkIfExists(String email) {
+    public boolean checkIfExists(String email) {
         for (PERSON per : this.experts) {
             if (per.getEmail().equals(email)) {
                 return true;
